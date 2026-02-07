@@ -25,28 +25,28 @@ struct AddTaskView: View {
                     ForEach(priorities, id: \.self) { p in
                         Text(p)
                     }
-                    .pickerStyle(.navigationLink)
                 }
+                .pickerStyle(.navigationLink)
             }
-        }
-        .navigationTitle("Add Task")
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
-                    let newTask = Task(title: title, priority: priority)
-                    onAdd(newTask)
-                    dismiss()
+            .navigationTitle("Add Task")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { dismiss() }
                 }
-                .disabled(title.isEmpty)
+                
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        let newTask = Task(title: title, priority: priority)
+                        onAdd(newTask)
+                        dismiss()
+                    }
+                    .disabled(title.isEmpty)
+                }
             }
         }
     }
 }
 
 #Preview {
-    // We give the preview a "fake" function that does nothing
-    // just so it stays happy and renders the screen.
-    AddTaskView { newTask in
-        print("Preview added: \(newTask.title)")
-    }
+    AddTaskView { newTask in }
 }

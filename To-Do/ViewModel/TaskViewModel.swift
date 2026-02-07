@@ -33,4 +33,12 @@ class TaskViewModel {
         }
         tasks = decodedData
     }
+    
+    func deleteTask(at offSets: IndexSet) {
+        tasks.remove(atOffsets: offSets)
+    }
+    
+    func moveTask(from source: IndexSet, to destination: Int) {
+        tasks.move(fromOffsets: source, toOffset: destination)
+    }
 }
