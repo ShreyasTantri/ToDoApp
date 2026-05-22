@@ -26,7 +26,7 @@ struct AddTaskView: View {
                         Text(p)
                     }
                 }
-                .pickerStyle(.navigationLink)
+                .pickerStyle(.wheel)
             }
             .navigationTitle("Add Task")
             .toolbar {
